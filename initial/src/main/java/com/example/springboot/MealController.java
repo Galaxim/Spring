@@ -9,17 +9,17 @@ import java.util.List;
 @RestController
 public class MealController {
 
-    Meal pizza = new Meal("Pizza", 6.50);
-    Meal superpizza = new Meal("Superpizza", 12.00);
-    Meal hotDog = new Meal("Hot Dog", 4.80);
+    Meal pizza = new Meal("Pizza", 6.50,"good");
+    Meal superpizza = new Meal("Superpizza", 12.00,"supergood");
+    Meal hotDog = new Meal("Hot Dog", 4.80,"meh");
 
-    @GetMapping("/meal/{name}")
-    public Meal getMealByName(@PathVariable("name") String name) {
-        if (name.equalsIgnoreCase("Pizza")) {
+    @GetMapping("/meal/description-match/{phrase}")
+    public Meal getMealByDescription(@PathVariable("phrase") String description) {
+        if (description.equalsIgnoreCase("good")) {
             return pizza;
-        } else if (name.equalsIgnoreCase("Superpizza")) {
+        } else if (description.equalsIgnoreCase("supergood")) {
             return superpizza;
-        } else if (name.equalsIgnoreCase("Hot Dog")) {
+        } else if (description.equalsIgnoreCase("meh")) {
             return hotDog;
         }
 
