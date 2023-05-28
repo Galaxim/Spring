@@ -1,8 +1,7 @@
 package com.example.springboot;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,16 +17,9 @@ public class MealController {
         meals.add(new Meal("Hot Dog", 4.80,"meh"));
     }
 
-    @GetMapping("/meal/price")
-    public List<Meal> getMealsByPriceRange(@RequestParam("min") double minPrice, @RequestParam("max") double maxPrice) {
-        List<Meal> filteredMeals = new ArrayList<>();
-
-        for (Meal meal : meals) {
-            if (meal.getPrice() >= minPrice && meal.getPrice() <= maxPrice) {
-                filteredMeals.add(meal);
-            }
-        }
-
-        return filteredMeals;
+    @PostMapping("/meal")
+    public ResponseEntity<String> addMeal(@RequestBody Meal newMeal) {
+        meals.add(newMeal);
+        return ResponseEntity.ok("Meal added successfully");
     }
 }
