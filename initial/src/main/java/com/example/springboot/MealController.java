@@ -1,4 +1,6 @@
 package com.example.springboot;
+import com.example.springboot.Service.MealService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,21 +12,32 @@ import java.util.List;
 @RestController
 public class MealController {
 
-    List<Meal> meals = new ArrayList<>();
+    private MealService mealService;
 
-    public MealController() {
-        meals.add(new Meal("Pizza", 6.50,"good"));
-        meals.add(new Meal("Superpizza", 12.00,"supergood"));
-        meals.add(new Meal("Hot Dog", 4.80,"meh"));
+    @Autowired
+    public MealController(MealService mealService) {
+        this.mealService = mealService;
     }
-    @PutMapping("/meal/{name}/price")
-    public ResponseEntity<String> updateMealPrice(@PathVariable String name, @RequestBody double updatedPrice) {
-        for (Meal meal : meals) {
-            if (meal.getName().equals(name)) {
-                meal.setPrice(updatedPrice);
-                return ResponseEntity.ok("Meal price updated successfully.");
-            }
+
+    @GetMapping(value = "/get/meals")
+    public ResponseEntity<List<Meal>> getMeals() {
+        return ResponseEntity.ok(mealService.getMeals());
+    }
+
+    @PutMapping(value = "put/meal")
+    public ResponseEntity<String> putMeal(@RequestBody Meal meal) {
+        try {
+            mealService.addMeal(meal);
+            return ResponseEntity.ok("Meal added!");
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return ResponseEntity.notFound().build();
+
+    }
+    @DeleteMapping(value = "delete/meal/{mealName}")
+    public ResponseEntity<String> deleteMeal(@PathVariable String mealName){
+        mealService.deleteMeal(mealName);
+        return ResponseEntity.ok("Meal deleted!");
     }
 }
+
