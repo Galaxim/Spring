@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -17,14 +18,14 @@ public class MealController {
         meals.add(new Meal("Hot Dog", 4.80,"meh"));
     }
 
-    @PutMapping("/meal/{name}")
-    public ResponseEntity<String> updateMeal(@PathVariable String name, @RequestBody Meal updatedMeal) {
-        for (Meal meal : meals) {
+    @DeleteMapping("/meal/{name}")
+    public ResponseEntity<String> deleteMeal(@PathVariable String name) {
+        Iterator<Meal> iterator = meals.iterator();
+        while (iterator.hasNext()) {
+            Meal meal = iterator.next();
             if (meal.getName().equals(name)) {
-                meal.setName(updatedMeal.getName());
-                meal.setPrice(updatedMeal.getPrice());
-                meal.setDescription(updatedMeal.getDescription());
-                return ResponseEntity.ok("Meal updated successfully.");
+                iterator.remove();
+                return ResponseEntity.ok("Meal deleted successfully.");
             }
         }
         return ResponseEntity.notFound().build();
