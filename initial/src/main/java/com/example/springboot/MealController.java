@@ -17,22 +17,14 @@ public class MealController {
         meals.add(new Meal("Superpizza", 12.00,"supergood"));
         meals.add(new Meal("Hot Dog", 4.80,"meh"));
     }
-
-    @DeleteMapping("/meal/price/{price}")
-    public ResponseEntity<String> deleteMealsAbovePrice(@PathVariable double price) {
-        Iterator<Meal> iterator = meals.iterator();
-        boolean deleted = false;
-        while (iterator.hasNext()) {
-            Meal meal = iterator.next();
-            if (meal.getPrice() > price) {
-                iterator.remove();
-                deleted = true;
+    @PutMapping("/meal/{name}/price")
+    public ResponseEntity<String> updateMealPrice(@PathVariable String name, @RequestBody double updatedPrice) {
+        for (Meal meal : meals) {
+            if (meal.getName().equals(name)) {
+                meal.setPrice(updatedPrice);
+                return ResponseEntity.ok("Meal price updated successfully.");
             }
         }
-        if (deleted) {
-            return ResponseEntity.ok("Meals deleted successfully.");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.notFound().build();
     }
 }
