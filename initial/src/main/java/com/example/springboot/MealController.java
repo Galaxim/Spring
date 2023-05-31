@@ -93,5 +93,15 @@ public class MealController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/meal/{name}/price")
+    public ResponseEntity<String> updateMealPrice(@PathVariable String name, @RequestBody double updatedPrice) {
+        for (Meal meal : meals) {
+            if (meal.getName().equals(name)) {
+                meal.setPrice(updatedPrice);
+                return ResponseEntity.ok("Meal price updated successfully.");
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
 
