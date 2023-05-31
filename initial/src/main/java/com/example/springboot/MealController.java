@@ -76,5 +76,22 @@ public class MealController {
         }
         return ResponseEntity.notFound().build();
     }
+    @DeleteMapping("/meal/price/{price}")
+    public ResponseEntity<String> deleteMealsAbovePrice(@PathVariable double price) {
+        Iterator<Meal> iterator = meals.iterator();
+        boolean deleted = false;
+        while (iterator.hasNext()) {
+            Meal meal = iterator.next();
+            if (meal.getPrice() > price) {
+                iterator.remove();
+                deleted = true;
+            }
+        }
+        if (deleted) {
+            return ResponseEntity.ok("Meals deleted successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 
