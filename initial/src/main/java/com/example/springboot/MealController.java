@@ -64,5 +64,17 @@ public class MealController {
         }
         return ResponseEntity.notFound().build();
     }
+    @DeleteMapping("/meal/{name}")
+    public ResponseEntity<String> removeMeal(@PathVariable String name) {
+        Iterator<Meal> iterator = meals.iterator();
+        while (iterator.hasNext()) {
+            Meal meal = iterator.next();
+            if (meal.getName().equals(name)) {
+                iterator.remove();
+                return ResponseEntity.ok("Meal deleted successfully.");
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
 
