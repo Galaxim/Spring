@@ -52,5 +52,17 @@ public class MealController {
         meals.add(newMeal);
         return ResponseEntity.ok("Meal added successfully");
     }
+    @PutMapping("/meal/{name}")
+    public ResponseEntity<String> updateMeal(@PathVariable String name, @RequestBody Meal updatedMeal) {
+        for (Meal meal : meals) {
+            if (meal.getName().equals(name)) {
+                meal.setName(updatedMeal.getName());
+                meal.setPrice(updatedMeal.getPrice());
+                meal.setDescription(updatedMeal.getDescription());
+                return ResponseEntity.ok("Meal updated successfully.");
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
 
