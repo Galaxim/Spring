@@ -27,5 +27,12 @@ public class OtherMealController {
                 return meal;
             }
         } throw new MealNotFoundException("Meal not found with name: " + name);
+    }@GetMapping("/meal/{name}")
+    public Meal getMealByDescription(@PathVariable("description") String description) {
+        for (Meal meal : meals) {
+            if (meal.getDescription().equalsIgnoreCase(description)) {
+                return meal;
+            }
+        } throw new MealNotFoundException("Meal not found with this description: " + description);
     }
 }
