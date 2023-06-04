@@ -1,6 +1,14 @@
 package com.example.springboot;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Meal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String name;
     private double price;
     private String description;
@@ -9,6 +17,9 @@ public class Meal {
         this.name = name;
         this.price = price;
         this.description=description;
+    }
+
+    public Meal() {
     }
 
     public String getName() {

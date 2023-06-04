@@ -31,4 +31,7 @@ public class MealService {
     public List<Meal> getMeals() {
         return mealDao.getMeals();
     }
+    public void insertMealTest(){
+        mealDao.save(new Meal("A",2,"B"));
+    }
 }
