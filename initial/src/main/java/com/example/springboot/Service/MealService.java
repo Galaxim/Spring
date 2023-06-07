@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class MealService {
     private MealDao mealDao;
 
-    @Autowired
+    //@Autowired
     public MealService(MealDao mealDao) {
         this.mealDao = mealDao;
     }

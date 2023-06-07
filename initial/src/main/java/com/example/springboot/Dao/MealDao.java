@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+//@Repository
 public abstract class MealDao implements JpaRepository<Meal, Long> {
     List<Meal> meals = new ArrayList<>();
     public void addMeal(Meal meal){

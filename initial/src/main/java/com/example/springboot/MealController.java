@@ -9,12 +9,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-@RestController
+//@RestController
 public class MealController {
 
     private MealService mealService;
 
-    @Autowired
+    //@Autowired
     public MealController(MealService mealService) {
         this.mealService = mealService;
     }
