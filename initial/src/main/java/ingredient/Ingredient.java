@@ -44,35 +44,35 @@ public class Ingredient {
         this.name = name;
     }
 
-    public boolean isVegetarian() {
+    public boolean getIsVegetarian() {
         return isVegetarian;
     }
 
-    public void setVegetarian(boolean vegetarian) {
+    public void setIsVegetarian(boolean vegetarian) {
         isVegetarian = vegetarian;
     }
 
-    public boolean isVegan() {
+    public boolean getIsVegan() {
         return isVegan;
     }
 
-    public void setVegan(boolean vegan) {
+    public void setIsVegan(boolean vegan) {
         isVegan = vegan;
     }
 
-    public boolean isGlutenFree() {
+    public boolean getIsGlutenFree() {
         return isGlutenFree;
     }
 
-    public void setGlutenFree(boolean glutenFree) {
+    public void setIsGlutenFree(boolean glutenFree) {
         isGlutenFree = glutenFree;
     }
 
-    public boolean isLactoseFree() {
+    public boolean getIsLactoseFree() {
         return isLactoseFree;
     }
 
-    public void setLactoseFree(boolean lactoseFree) {
+    public void setIsLactoseFree(boolean lactoseFree) {
         isLactoseFree = lactoseFree;
     }
 }

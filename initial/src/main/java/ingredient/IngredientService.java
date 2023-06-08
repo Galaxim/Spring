@@ -32,10 +32,10 @@ public class IngredientService {
         if (existingIngredient.isPresent()) {
             Ingredient ingredient = existingIngredient.get();
             ingredient.setName(updatedIngredient.getName());
-            ingredient.setVegetarian(updatedIngredient.isVegetarian());
-            ingredient.setVegan(updatedIngredient.isVegan());
-            ingredient.setGlutenFree(updatedIngredient.isGlutenFree());
-            ingredient.setLactoseFree(updatedIngredient.isLactoseFree());
+            ingredient.setIsVegetarian(updatedIngredient.getIsVegetarian());
+            ingredient.setIsVegan(updatedIngredient.getIsVegan());
+            ingredient.setIsGlutenFree(updatedIngredient.getIsGlutenFree());
+            ingredient.setIsLactoseFree(updatedIngredient.getIsLactoseFree());
             return ingredientDao.save(ingredient);
         } else {
             throw new IllegalArgumentException("Ingredient not found with ID: " + id);
