@@ -1,4 +1,4 @@
-package ingredient;
+package com.example.springboot.ingredient;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

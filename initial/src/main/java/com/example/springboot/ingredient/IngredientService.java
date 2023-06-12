@@ -1,6 +1,5 @@
-package ingredient;
+package com.example.springboot.ingredient;
 
-import com.example.springboot.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
