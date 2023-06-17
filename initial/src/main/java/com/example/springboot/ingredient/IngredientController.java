@@ -1,6 +1,7 @@
 package com.example.springboot.ingredient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class IngredientController {
     @DeleteMapping("/{id}")
     public void deleteIngredient(@PathVariable Long id) {
         ingredientService.deleteIngredient(id);
+    }
+
+    @GetMapping("/winter-ingredients")
+    public ResponseEntity<List<Ingredient>> getWinterIngredients() {
+        return ResponseEntity.ok(IngredientService.getWinterIngredients());
     }
 }

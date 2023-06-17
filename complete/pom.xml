@@ -40,7 +40,12 @@
             <version>3.0.4</version>
             <scope>test</scope>
 		</dependency>
-		<!-- end::tests[] -->
+        <dependency>
+            <groupId>io.joshworks.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <!-- end::tests[] -->
 	</dependencies>
 
 	<build>

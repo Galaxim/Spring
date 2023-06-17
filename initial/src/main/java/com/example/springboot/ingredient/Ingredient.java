@@ -15,14 +15,16 @@ public class Ingredient {
     private boolean isVegan;
     private boolean isGlutenFree;
     private boolean isLactoseFree;
+    private boolean isWinterIngredient;
 
-    public Ingredient(Long id, String name, boolean isVegetarian, boolean isVegan, boolean isGlutenFree, boolean isLactoseFree) {
+    public Ingredient(Long id, String name, boolean isVegetarian, boolean isVegan, boolean isGlutenFree, boolean isLactoseFree, boolean isWinterIngredient) {
         this.id = id;
         this.name = name;
         this.isVegetarian = isVegetarian;
         this.isVegan = isVegan;
         this.isGlutenFree = isGlutenFree;
         this.isLactoseFree = isLactoseFree;
+        this.isWinterIngredient = isWinterIngredient;
     }
 
     public Ingredient() {
@@ -74,6 +76,14 @@ public class Ingredient {
 
     public void setIsLactoseFree(boolean lactoseFree) {
         isLactoseFree = lactoseFree;
+    }
+
+    public boolean getIsWinterIngredient() {
+        return isWinterIngredient;
+    }
+
+    public void setIsWinterIngredient(boolean winter) {
+        isWinterIngredient = winter;
     }
 }
 
