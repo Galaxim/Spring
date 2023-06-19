@@ -43,6 +43,6 @@ public class IngredientController {
 
     @GetMapping("/winter-ingredients")
     public ResponseEntity<List<Ingredient>> getWinterIngredients() {
-        return ResponseEntity.ok(IngredientService.getWinterIngredients());
+        return ResponseEntity.ok(ingredientService.getWinterIngredients());
     }
 }
